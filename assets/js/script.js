@@ -25,8 +25,17 @@ var app = new Vue(
                 //boolean Var changes
                 this.toDoList[index].done = true;
                 console.log(`done is`, this.toDoList[index].done);
-                //task goes out from the array
+                //task goes out from the array and pushed in other array
+                this.toDoList.splice(index, 1);
+
+                this.doneList.push(element);
+
+                console.log( `To Do :`, toDoList, ` & done`, doneList );
                 
+            },
+
+            markHowToDo( index ){
+                this.doneList.splice( index, 1);
             }
 
         },

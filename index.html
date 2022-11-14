@@ -29,7 +29,7 @@
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add it</button>
             </div>
             <!-- To Do list container -->
-            <div id="toDoListContainer">
+            <div id="toDoListContainer" class="text-center">
                 
                 <!-- explainer title -->
                 <h4 class="m-2">
@@ -42,17 +42,17 @@
                 <span v-if="toDoList.length == 0" class="text-success m-2 d-block" >
                     You're complitly free today ... let's find something to do !!!!!!!
                 </span>
-                <span v-if="toDoList.length > 0 && toDoList < 5" class="text-warning m-2 d-block" >
+                <span v-else="toDoList.length > 0 && toDoList < 5" class="text-warning m-2 d-block" >
                     You have a quite number of taskes today !!!!!!!
                 </span>
-                <span v-if="toDoList.length >=5" class="text-danger m-2 d-block" >
+                <span v-else="toDoList.length >=5" class="text-danger m-2 d-block" >
                     Just Rock&Roll MaN !!!!!!!
                 </span>
-                
+
                 <!-- UL with v-if  -->
                 <ul v-if="toDoList.length > 0" class="list-group list-group-flush">
                     <!-- dinamic and self-generative LI with v-for -->
-                    <li v-for="( element, index) in toDoList" :key="index" class="list-group-item d-flex justify-content-between">
+                    <li v-for="( element, index) in toDoList" :key="index" class="bg-dark text-white list-group-item d-flex justify-content-between">
                         <!-- span where printing the taskes -->
                         <span @click="markHowDone">
                             {{ element.text }}

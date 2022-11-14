@@ -16,10 +16,36 @@
 </head>
 
 
-<body>
-
+<body class="bg-dark text-white">
+    <!-- vue's field -->
     <div id="root">
+        <!-- general container -->
+        <div class="container d-flex direction-column justify-content-between align-items-center p-5">
+            <!-- "form" container -->
+            <div class="input-group mb-3">
+                <!-- input for adding new taskes -->
+                <input type="text" class="form-control" placeholder="add a new task to do" aria-label="add a new task to do" aria-describedby="button-addon2">
+                <!-- btn for pushing into a new array the new taskes -->
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add it</button>
+            </div>
+            <!-- To Do list container -->
+            <div id="toDoListContainer">
+                <!-- UL with v-if  -->
+                <ul v-if="toDoList.length > 0" class="list-group list-group-flush">
+                    <!-- dinamic and self-generative LI with v-for -->
+                    <li v-for="( element, index) in toDoList" :key="index" class="list-group-item d-flex justify-content-between">
+                        <!-- span where printing the taskes -->
+                        <span @click="markHowDone">
+                            {{ element.text }}
+                        </span>
+                    </li>
+                </ul>
+            </div>
         
+            <!-- general container closure -->
+        </div>
+    
+        <!-- #root tag closure -->
     </div>
 
     

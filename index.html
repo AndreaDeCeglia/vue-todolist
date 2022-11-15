@@ -54,11 +54,41 @@
                     <!-- dinamic and self-generative LI with v-for -->
                     <li v-for="( element, index) in toDoList" :key="index" class="bg-dark text-white list-group-item d-flex justify-content-between">
                         <!-- span where printing the taskes -->
-                        <span @click="markHowDone">
+                        <span @click="markHowDone" :class=" (element.done == true) ? 'text-decoration-line-through' : '' ">
                             {{ element.text }}
                         </span>
+                        <!-- btn for deletting the task from the list -->
+                        <button @click="removeToDo(index)" class="btn btn-outline-dark text-white" >
+                            delete
+                        </button>
                     </li>
                 </ul>
+            <!-- toDoListClosure -->
+            </div>
+
+            <!-- doneListContainer -->
+            <div id="doneListContainer" class="p-5">
+                <h4 v-if="doneList.length > 0">
+                    You got
+                        <span> {{ doneList.length }} </span>
+                    taskes today !!!!!!!!
+                </h4>
+
+                <!-- UL with v-if -->
+                <ul v-if="doneList.length > 0" class="list-group list-group-flush">
+                    <li v-for="(element, index) in doneList.length" :key="index" class="list-group-item d-flex justify-content-between">
+    
+                        <span :class="(element.done == true) ? 'text-decoration-line-through' : '' ">
+                            {{ element.text }}
+                        </span>
+    
+                        <button @click="removeToDo(index)" class="btn btn-outline-dark text-white">
+                            Delete
+                        </button>
+    
+                    </li>
+                </ul>
+            <!-- doneListClosure -->
             </div>
         
             <!-- general container closure -->

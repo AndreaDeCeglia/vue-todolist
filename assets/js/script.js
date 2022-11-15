@@ -21,6 +21,15 @@ var app = new Vue(
 
         methods: {
 
+            addNewTask(){
+                newTask = {
+                    text: this.taskInputName,
+                    done: false
+                }
+                this.todoList.push(newTask)
+                this.taskInputName = ''
+            },
+
             markHowDone( index, element ){
                 //boolean Var changes
                 this.toDoList[index].done = true;
@@ -36,7 +45,11 @@ var app = new Vue(
 
             markHowToDo( index ){
                 this.doneList.splice( index, 1);
-            }
+            },
+
+            removeToDo(index){
+                this.toDoList.splice( index, 1);
+            },
 
         },
     }
